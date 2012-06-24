@@ -1,5 +1,14 @@
 (ns euler.core)
 
+(defn int-to-digits [n]
+  (for [character (str n)]
+    (Integer/parseInt (str character))))
+
+(defn palindrome? [n]
+  (if (= (int-to-digits n) (reverse (int-to-digits n)))
+    true
+    false))
+
 (defn divisible? [n d]
   (zero? (rem n d)))
 
@@ -48,4 +57,22 @@
       (/ 600851475143 x) 
       (recur (inc x)))))
 
-(euler003)
+(euler003) 
+
+(range 10 1 -1)
+
+(defn euler004 []
+  (last 
+    (sort 
+      (filter palindrome? 
+              (for [x (range 1 1000) y (range 1 1000)] (* x y)))))) 
+
+(euler004)
+
+(defn euler005 []
+  (loop [x 1]
+    (if (every? true? (map (fn [n] divisible? x n) (range 1 10)))
+    x 
+    (recur (+ x 20)))))
+
+(euler005)
