@@ -160,7 +160,7 @@
 (euler011)
 
 (defn euler012 []
-  (first (filter (fn [n] (< 5 (count (filter #(divisible? n %) (range 1 (inc n)))))) (triangle-numbers))))
+  (first (filter (fn [n] (< 250 (count (filter #(divisible? n %) (range 1 (Math/sqrt n)))))) (triangle-numbers))))
 
 (euler012)
 
